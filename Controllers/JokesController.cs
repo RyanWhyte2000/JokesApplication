@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JokesApplication.Data;
 using JokesApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JokesApplication.Controllers
 {
@@ -95,6 +96,7 @@ namespace JokesApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
         {
             if (id != joke.Id)
@@ -125,7 +127,7 @@ namespace JokesApplication.Controllers
             return View(joke);
         }
 
-        // GET: Jokes/Delete/5
+        // GET: Jokes/Delete/5       
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

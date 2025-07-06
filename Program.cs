@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<JokesApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("JokesApplicationContext") ?? throw new InvalidOperationException("Connection string 'JokesApplicationContext' not found.")));
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
